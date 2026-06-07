@@ -15,7 +15,8 @@ python-dotenv
 openai
 pypdf
 pdfplumber
-
+reportlab
+reportlab
 python-multipart
 faiss-cpu
 easyocr
