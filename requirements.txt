@@ -13,6 +13,7 @@ gunicorn
 sentence-transformers
 transformers
 pydantic
+pdfplumber
 python-dotenv
 pandas
 requests
