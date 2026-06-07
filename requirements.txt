@@ -10,8 +10,6 @@ langchain-ollama
 chromadb
 faiss-cpu
 sentence-transformers
-opencv-python-headless
-torch
 transformers
 pydantic
 python-dotenv
