@@ -16,6 +16,7 @@ openai
 pypdf
 pdfplumber
 
+python-multipart
 faiss-cpu
 easyocr
 pytesseract
