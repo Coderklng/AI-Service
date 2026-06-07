@@ -9,6 +9,7 @@ langchain-groq
 langchain-ollama
 chromadb
 faiss-cpu
+gunicorn
 sentence-transformers
 transformers
 pydantic
