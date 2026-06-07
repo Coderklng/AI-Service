@@ -1,0 +1,25 @@
+# Python ignore files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment (Sabse zaroori - isse upload mat karna!)
+venv/
+env/
+.env/
+
+# Environment Variables (Apni API keys ko kabhi GitHub par mat daalo)
+.env
+
+# Vector Database (Agar aapka faiss index folder bahut bada hai)
+vector_db/
+uploads/
+output/
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store
+
+# Docker (Optional)
+.dockerignore

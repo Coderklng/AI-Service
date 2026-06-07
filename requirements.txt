@@ -1,0 +1,32 @@
+# API layer
+fastapi
+uvicorn
+
+# LLM / RAG framework
+langchain==0.3.27
+langchain-community==0.3.27
+langchain-core==0.3.27
+langchain-groq==0.3.3
+langchain-ollama==0.3.3
+
+# Document loading
+pypdf
+
+# Text splitting
+tiktoken
+
+# Vector DB (ONLY FAISS recommended)
+faiss-cpu
+
+# Embeddings / LLM
+ollama
+openai
+
+# Utilities
+python-dotenv
+pydantic
+numpy
+
+#ocr 
+easyocr 
+pytesseract
