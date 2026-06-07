@@ -14,6 +14,8 @@ pydantic
 python-dotenv
 openai
 pypdf
+pdfplumber
+
 faiss-cpu
 easyocr
 pytesseract
