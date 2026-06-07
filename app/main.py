@@ -3,9 +3,13 @@ from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
+import sys
 import uuid
 from langchain_core.output_parsers import JsonOutputParser
 # Imports bina 'app.' prefix ke (kyunki file 'app' folder ke andar hai)
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from api.routes import router
 from services.rag_service import RAGService
 from services.llm_service import LLMService
@@ -19,6 +23,7 @@ from services.notes_service import NotesService
 from services.ats_service import ATSService
 from loaders.pdf_loader import Loader
 from services.support_service import SupportService
+import uvicorn
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
@@ -91,3 +96,8 @@ def download_file(file_id: str):
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(path=file_path, media_type="application/pdf", filename=f"notes_{file_id}.pdf")
+
+
+if __name__ == "__main__":
+    # Render port 10000 hi expect karta hai
+    uvicorn.run("main:app", host="0.0.0.0", port=10000)
