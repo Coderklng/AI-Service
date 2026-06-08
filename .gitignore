@@ -13,7 +13,7 @@ env/
 
 # Vector Database (Agar aapka faiss index folder bahut bada hai)
 vector_db/
-uploads/
+
 output/
 
 # IDE files
