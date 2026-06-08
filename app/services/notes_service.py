@@ -40,7 +40,7 @@ class NotesService:
         
         return {
             "message": "PDF created successfully",
-            "download_url": f"http://localhost:8000/download/{file_id}",
+            "download_url": f"https://ai-service-production-558b.up.railway.app/download/{file_id}",
             "filename":filename,
             "notes": model_output
         }
