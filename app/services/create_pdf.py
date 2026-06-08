@@ -4,14 +4,13 @@ from reportlab.lib import colors
 import uuid
 import os 
 
-UPLOAD_DIR = "../uploads"
+UPLOAD_DIR = "../Notes"
 
 os.makedirs(UPLOAD_DIR,exist_ok=True)
 
 class PDFService:
-    def __init__(self, filename=f"../uploads/notes_{uuid.uuid4()}.pdf"):
-       self.doc = SimpleDocTemplate(filename=filename) 
-       self.filename = filename
+    def __init__(self):
+     
        self.styles = getSampleStyleSheet()
        self.custom_style = ParagraphStyle(
            "Custom",
