@@ -92,7 +92,7 @@ def upload_resume(job_description: str = Form(...), file: UploadFile = File(...)
 
 @app.get("/download/{file_id}")
 def download_file(file_id: str):
-    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "uploads", f"notes_{file_id}.pdf")
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Notes", f"notes_{file_id}.pdf")
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(path=file_path, media_type="application/pdf", filename=f"notes_{file_id}.pdf")
