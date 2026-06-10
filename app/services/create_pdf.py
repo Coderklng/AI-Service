@@ -4,7 +4,9 @@ from reportlab.lib import colors
 import uuid
 import os 
 
-UPLOAD_DIR = "../Notes"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+UPLOAD_DIR = os.path.join(BASE_DIR,"..","..","Notes")
 
 os.makedirs(UPLOAD_DIR,exist_ok=True)
 
