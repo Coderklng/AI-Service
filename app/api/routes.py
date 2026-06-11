@@ -13,9 +13,7 @@ import os
 
 router = APIRouter()
 
-BASE_DIR =  os.path.dirname(os.path.abspath(__file__))
-
-UPLOAD_DIR = os.path.join(BASE_DIR,"..","Uploader")
+UPLOAD_DIR = "../Uploader"
 
 os.makedirs(UPLOAD_DIR,exist_ok=True)
 
