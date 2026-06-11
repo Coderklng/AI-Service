@@ -9,40 +9,29 @@ class RAGService:
     ):
         self.vectorDb = vectorDb
         self.llm = llm
-
     def chat(self, query):
+    
+        docs = self.vectorDb.get_documents(query=query, k=3)
 
-        # retrieve documents
-        docs = self.vectorDb.get_documents(
-            query=query,
-            k=3
-        )
+    # remove duplicates
+        unique_docs = list({doc.page_content: doc for doc in docs}.values())
 
-        # context build
-        context = "\n\n".join(
-            [
-                doc.page_content
-                if hasattr(doc, "page_content")
-                else str(doc)
-                for doc in docs
-            ]
-        )
+        context = "\n\n".join([
+        doc.page_content.strip()
+        for doc in unique_docs
+        ])[:4000]
 
-        # build prompt
         prompt = OwnTemplate.message_prompt()
 
-        messages = prompt.invoke(
-            {
-                "context": context,
-                "query": query
-            }
-        )
+        messages = prompt.invoke({
+        "context": context,
+        "query": query
+         })
 
-        # llm response
         answer = self.llm.invoke(messages)
-        content = answer.content if hasattr(answer,"content") else str(answer)
+       
         return {
-            "query": query,
-            "answer":content,
-            "context": context
-        } 
+        "query": query,
+        "answer": answer,
+        "context": context
+         }

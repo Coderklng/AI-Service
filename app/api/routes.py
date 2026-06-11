@@ -6,19 +6,18 @@ from utils.text_splitter import TextSplitter
 from embeddings.ollama_embeddings import Embedding
 from vectorstores.faiss_store import VectorDB
 import sys 
-
+import os
 
 
 
 
 router = APIRouter()
 
+BASE_DIR =  os.path.dirname(os.path.abspath(__file__))
 
-UPLOAD_DIR = "../data/raw"
+UPLOAD_DIR = os.path.join(BASE_DIR,"..","Uploader")
 
 os.makedirs(UPLOAD_DIR,exist_ok=True)
-
-
 
 @router.post("/upload")
 async def uploaded_file(file: UploadFile = File(...)):

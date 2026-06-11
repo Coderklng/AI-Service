@@ -23,7 +23,11 @@ from services.notes_service import NotesService
 from services.ats_service import ATSService
 from loaders.pdf_loader import Loader
 from services.support_service import SupportService
+from services.code_service import CoderService
+from langchain_core.output_parsers import PydanticOutputParser
+from schemas.code_request import CodeResponse
 import uvicorn
+
 
 load_dotenv()
 api_key = os.getenv("API_KEY")
@@ -50,6 +54,10 @@ support = SupportService(llm=llm)
 quiz = QuizGenerate(llm=llm)
 serviceNotes = NotesService(llm=llm)
 service = ChatService(llm=llm)
+
+new_parsers = PydanticOutputParser(pydantic_object=CodeResponse)
+code = CoderService(llm=llm.llm,parser=new_parsers)
+
 
 app.include_router(router, prefix="/api")
 
@@ -96,6 +104,12 @@ def download_file(file_id: str):
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(path=file_path, media_type="application/pdf", filename=f"notes_{file_id}.pdf")
+
+
+
+@app.post("/code/generate")
+def Generator(request: ChatRequest):
+    return code.generate_code(query=request.question)
 
 
 if __name__ == "__main__":
